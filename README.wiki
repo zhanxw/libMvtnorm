@@ -1,0 +1,9 @@
+Multivariate normal distribution (C++)
+--------------------------------------
+
+
+= USAGE =
+
+Use pmvnorm_P and pmvnorm_Q to calculate CDF and upper tail of CDF.
+
+Read test.cpp for more details.

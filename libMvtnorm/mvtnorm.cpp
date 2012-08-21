@@ -78,7 +78,7 @@ double pmvnorm_P(int n,
 }
 
 /**
- * @return (1 - CDF) of multivariate normal P ( X > bound ) where X ~ MVN(0, correlationMatrix)
+ * @return (upper tail of CDF) of multivariate normal P ( X > bound ) where X ~ MVN(0, correlationMatrix)
  */
 double pmvnorm_Q(int n,
                  double* bound,
