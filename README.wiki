@@ -7,3 +7,13 @@ Multivariate normal distribution (C++)
 Use pmvnorm_P and pmvnorm_Q to calculate CDF and upper tail of CDF.
 
 Read test.cpp for more details.
+
+= About =
+
+This is a simple wrapper of R package libmvtnorm (or Fortran code MVTDST).
+I put here just because I cannot find a handy C++ version.
+
+= Contact = 
+
+Please use [https://github.com/zhanxw/libMvtnorm github].
+
