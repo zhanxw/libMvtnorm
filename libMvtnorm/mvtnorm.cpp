@@ -1,9 +1,21 @@
 #include "mvtnorm.h"
 
 #include <stdlib.h>
-#ifndef NDEBUG
 #include <stdio.h>
-#endif
+
+// error message
+    if (inform == 0) msg <- "Normal Completion"
+                          if (inform == 1) msg <- "Completion with error > abseps\"
+    if (inform == 2) msg <- \"N greater 1000 or N < 1\"
+    if (inform == 3) msg <- \"Covariance matrix not positive semidefinite\"\"\"\"\"\""
+
+// infinity bounds
+const static int INFIN_BOUND_NORMAL = 2;        // (..., ...)
+const static int INFIN_BOUND_UPPER = 1;         // (..., inf)
+const static int INFIN_BOUND_LOWER = 0;         // (-inf, ..)
+const static int INFIN_BOUND_LOWER_UPPER = -1;  // (-inf, inf)
+
+
 /**
  * @return <0 if anything goes wrong.
  */
@@ -25,9 +37,8 @@ double pmvnorm(int* n,
            lower, upper, infin, correl, delta,
            maxpts, abseps, releps,
            error, value, inform);
-#ifndef NDEBUG
   printf ("error = %g, value = %g, inform = %d\n", *error, *value, *inform);
-#endif  
+  
   switch (*inform) {
     case 0:
       return *value;
@@ -49,10 +60,9 @@ double pmvnorm_P(int n,
                  double* error)
 {
   int nu_ = 0;
-  int maxpts_ = 25000;
-  double abseps_ = 0.001;
-  double releps_ = 0;
-
+  int maxpts_ = 25000;     // default in mvtnorm: 25000
+  double abseps_ = 1e-6;   // default in mvtnorm: 0.001, we make it more stringent
+  double releps_ = 0;      // default in mvtnorm: 0
 
   double* lower = new double[n];
   int* infin = new int[n];
@@ -78,7 +88,7 @@ double pmvnorm_P(int n,
 }
 
 /**
- * @return (upper tail of CDF) of multivariate normal P ( X > bound ) where X ~ MVN(0, correlationMatrix)
+ * @return (1 - CDF) of multivariate normal P ( X > bound ) where X ~ MVN(0, correlationMatrix)
  */
 double pmvnorm_Q(int n,
                  double* bound,
@@ -87,7 +97,7 @@ double pmvnorm_Q(int n,
 {
   int nu_ = 0;
   int maxpts_ = 25000;
-  double abseps_ = 0.001;
+  double abseps_ = 1e-6;
   double releps_ = 0;
 
 
