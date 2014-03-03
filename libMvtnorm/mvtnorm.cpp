@@ -4,11 +4,11 @@
 #include <stdio.h>
 
 // error message
-//     if (inform == 0) msg <-
-const static char[][] = {"Normal Completion",                           // inform = 0
-                         "Completion with error > abseps",              // inform = 1
-                         "N greater 1000 or N < 1",                     // inform = 2
-                         "Covariance matrix not positive semidefinite"};// inform = 3
+const static char errorMessage0[] = "Normal Completion";                           // inform = 0
+const static char errorMessage1[] = "Completion with error > abseps";              // inform = 1
+const static char errorMessage2[] = "N greater 1000 or N < 1";                     // inform = 2
+const static char errorMessage3[] ="Covariance matrix not positive semidefinite";  // inform = 3
+const static char* errorMessage[4] = {errorMessage0, errorMessage1, errorMessage2, errorMessage3};
 
 // infinity bounds
 const static int INFIN_BOUND_NORMAL = 2;        // (..., ...)
