@@ -5,11 +5,12 @@
 
 class MultiVariateNormal{
  public:
-  int pmvnorm(Vector& lower,
-              Vector& upper,
-              Vector& mean,
-              Matrix& cov,
-              double* result);
+  int pmvnorm_band(Vector& lower,
+                   Vector& upper,
+                   Vector& mean,
+                   Matrix& cov,
+                   double* result);
+  
  private:
   std::vector<double> lower;
   std::vector<double> upper;
